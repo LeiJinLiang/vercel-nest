@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from './app.module';
+import { AppModule } from '../src/app.module';
 import express from 'express';
-import cors from 'cors';  // <-- 导入cors
+import cors from 'cors'; // <-- 导入cors
 
 const server = express();
 
