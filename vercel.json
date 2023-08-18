@@ -3,7 +3,7 @@
   "name": "nestjs-app",
   "functions": {
     "api/main-vercel.ts": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@2.15.10"
     }
   },
   "rewrites": [
