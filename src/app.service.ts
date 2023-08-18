@@ -19,9 +19,30 @@ export class AppService {
     );
   }
 
+  // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html
+  getAccessToken() {
+    return this.getDataFromApi(
+      `https://api.weixin.qq.com/cgi-bin/token?appid=${APP_ID}&secret=${APP_SECRET}&grant_type=client_credential`,
+    );
+  }
+
+  getPhoneNumber(code: string) {
+    const accessToken = this.getAccessToken();
+    return this.postDataToApi(
+      `https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=${accessToken}`,
+      { code },
+    );
+  }
+
   getDataFromApi(endpoint: string) {
     return this.httpService
       .get(endpoint)
+      .pipe(map((response) => response.data));
+  }
+
+  postDataToApi(endpoint: string, data: any) {
+    return this.httpService
+      .post(endpoint, data)
       .pipe(map((response) => response.data));
   }
 }

@@ -14,4 +14,9 @@ export class AppController {
   getUserInfo(@Body('code') code: string) {
     return this.appService.login(code);
   }
+
+  @Post('/get_phone')
+  getPhoneNumber(@Body('code') code: string) {
+    return this.appService.getPhoneNumber(code);
+  }
 }
