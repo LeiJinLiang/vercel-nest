@@ -20,4 +20,4 @@ const startNestApplication = async (expressInstance) => {
 
 startNestApplication(server);
 
-export const app = server;
+export default server;
