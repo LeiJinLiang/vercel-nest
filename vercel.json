@@ -2,14 +2,14 @@
   "version": 2,
   "name": "nestjs-app",
   "functions": {
-    "src/main-vercel.ts": {
+    "api/main-vercel.ts": {
       "runtime": "@vercel/node@1.3.1"
     }
   },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/src/main-vercel.ts"
+      "destination": "/api/main-vercel.ts"
     }
   ]
 }
