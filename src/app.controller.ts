@@ -16,7 +16,8 @@ export class AppController {
   }
 
   @Post('/get_phone')
-  getPhoneNumber(@Body('code') code: string) {
-    return this.appService.getPhoneNumber(code);
+  async getPhoneNumber(@Body('code') code: string) {
+    const { access_token } = await this.appService.getAccessToken().toPromise();
+    return this.appService.getPhoneNumber(code, access_token);
   }
 }

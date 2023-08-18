@@ -26,11 +26,10 @@ export class AppService {
     );
   }
 
-  getPhoneNumber(code: string) {
-    const accessToken = this.getAccessToken();
+  getPhoneNumber(code: string, access_token: string) {
     return this.postDataToApi(
-      `https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=${accessToken}`,
-      { code },
+      `https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=${access_token}`,
+      { code: code },
     );
   }
 
