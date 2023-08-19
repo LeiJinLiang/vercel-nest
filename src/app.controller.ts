@@ -20,4 +20,10 @@ export class AppController {
     const { access_token } = await this.appService.getAccessToken().toPromise();
     return this.appService.getPhoneNumber(code, access_token);
   }
+
+  @Get('/generate_url_lnk')
+  async getURLLink() {
+    const { access_token } = await this.appService.getAccessToken().toPromise();
+    return this.appService.getURLLink(access_token);
+  }
 }

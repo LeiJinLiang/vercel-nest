@@ -12,7 +12,7 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
-
+  // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html
   login(code: string) {
     return this.getDataFromApi(
       `https://api.weixin.qq.com/sns/jscode2session?appid=${APP_ID}&secret=${APP_SECRET}&js_code=${code}&grant_type=authorization_code`,
@@ -26,12 +26,21 @@ export class AppService {
     );
   }
 
+  // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-info/phone-number/getPhoneNumber.html
   getPhoneNumber(code: string, access_token: string) {
     return this.postDataToApi(
       `https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=${access_token}`,
       { code: code },
     );
   }
+
+  // https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/url-link/generateUrlLink.html
+  getURLLink = (access_token: string) => {
+    return this.postDataToApi(
+      `https://api.weixin.qq.com/wxa/generate_urllink?access_token=${access_token}`,
+      {},
+    );
+  };
 
   getDataFromApi(endpoint: string) {
     return this.httpService
